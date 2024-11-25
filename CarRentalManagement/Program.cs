@@ -26,7 +26,8 @@ builder.Services.AddAuthentication(options =>
 	.AddIdentityCookies();
 builder.Services.AddIdentityCore<CarRentalManagementUser>(options =>
 options.SignIn.RequireConfirmedAccount = true)
-	.AddEntityFrameworkStores<CarRentalManagementContext>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<CarRentalManagementContext>()
 	.AddSignInManager()
 	.AddDefaultTokenProviders();
 builder.Services.AddSingleton<IEmailSender<CarRentalManagementUser>, IdentityNoOpEmailSender>();
